@@ -1,0 +1,27 @@
+[
+    { "name": "red", "value": "#d51519" },
+    { "name": "white", "value": "#ffffff" },
+    { "name": "sakura_pink", "value": "#d74f8c" },
+    { "name": "pink", "value": "#ecaeca" },
+    { "name": "passion_pink", "value": "#d11176" },
+    { "name": "purple", "value": "#871778" },
+    { "name": "blue", "value": "#1f2772" },
+    { "name": "pastel_blue", "value": "#58b7d4" },
+    { "name": "emerald_green", "value": "#129480" },
+    { "name": "green", "value": "#0d8c3b" },
+    { "name": "yellow", "value": "#f3e826" },
+    { "name": "orange", "value": "#e37e10" },
+    { "name": "lime_green", "value": "#a2c21c" },
+    { "name": "yellow_green", "value": "#d1d520" },
+    { "name": "light_blue", "value": "#a7d6ed" },
+    { "name": "light_green", "value": "#d1d522" },
+    { "name": "apple_green", "value": "#a2c21c" },
+    { "name": "hiyoko_yellow", "value": "#f5e57d" },
+    { "name": "yamabuki_orange", "value": "#ecae19" },
+    { "name": "light_orange", "value": "#ea9913" },
+    { "name": "hot_pink", "value": "#d83469" },
+    { "name": "peach", "value": "#e7959f" },
+    { "name": "violet", "value": "#726eaf" },
+    { "name": "ice_blue", "value": "#0c78bc" }
+]
+  
