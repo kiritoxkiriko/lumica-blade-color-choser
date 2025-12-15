@@ -13,7 +13,7 @@
     { "name": "orange", "value": "#e37e10" },
     { "name": "lime_green", "value": "#a2c21c" },
     { "name": "yellow_green", "value": "#d1d520" },
-    { "name": "light_blue", "value": "#a7d6ed" },
+    { "name": "light_blue", "value": "#0c78bc" },
     { "name": "light_green", "value": "#d1d522" },
     { "name": "apple_green", "value": "#a2c21c" },
     { "name": "hiyoko_yellow", "value": "#f5e57d" },
@@ -22,6 +22,6 @@
     { "name": "hot_pink", "value": "#d83469" },
     { "name": "peach", "value": "#e7959f" },
     { "name": "violet", "value": "#726eaf" },
-    { "name": "ice_blue", "value": "#0c78bc" }
+    { "name": "ice_blue", "value": "#a7d6ed" }
 ]
   
