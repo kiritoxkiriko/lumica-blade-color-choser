@@ -13,9 +13,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Lumica Blade Charge Color Selector",
+  title: "Lumica DAISENKO Blade Charge Color Selector",
   description:
-    "Input any hex RGB and find the closest Lumica Blade Charge official color with its image.",
+    "Input any hex RGB and find the closest Lumica DAISENKO Blade Charge official color with its image.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
