@@ -7,6 +7,7 @@ import lumicaColors from "../data/lumica_colors.json";
 type PaletteColor = {
   name: string;
   value: string;
+  hsv: [number, number, number];
   index: number;
   mode: "standard" | "extended";
 };
@@ -35,7 +36,7 @@ type Copy = {
   closestTitle: string;
   standardLabel: string;
   extendedLabel: string;
-  rgbDistance: string;
+  hsvDistance: string;
   inputCardLabel: string;
   matchedCardLabel: string;
   officialSprite: string;
@@ -70,7 +71,7 @@ const translations: Record<Locale, Copy> = {
     closestTitle: "Closest official color",
     standardLabel: "Standard",
     extendedLabel: "Extended",
-    rgbDistance: "RGB distance",
+    hsvDistance: "HSV distance",
     inputCardLabel: "Input",
     matchedCardLabel: "Matched",
     officialSprite: "Official sprite",
@@ -103,7 +104,7 @@ const translations: Record<Locale, Copy> = {
     closestTitle: "最接近的官方颜色",
     standardLabel: "标准",
     extendedLabel: "扩展",
-    rgbDistance: "RGB 距离",
+    hsvDistance: "HSV 距离",
     inputCardLabel: "输入",
     matchedCardLabel: "匹配结果",
     officialSprite: "官方切片",
@@ -136,7 +137,7 @@ const translations: Record<Locale, Copy> = {
     closestTitle: "最も近い公式カラー",
     standardLabel: "基本",
     extendedLabel: "追加",
-    rgbDistance: "RGB 距離",
+    hsvDistance: "HSV 距離",
     inputCardLabel: "入力",
     matchedCardLabel: "マッチ結果",
     officialSprite: "公式スプライト",
@@ -154,13 +155,6 @@ const localeLabels: Record<Locale, string> = {
   zh: "中文",
   ja: "日本語",
 };
-
-const palette: PaletteColor[] = lumicaColors.map((color, index) => ({
-  ...color,
-  value: color.value.toLowerCase(),
-  index,
-  mode: index < 12 ? "standard" : "extended",
-}));
 
 const toTitle = (text: string) =>
   text
@@ -253,18 +247,56 @@ const parseHex = (input: string): ParsedHex | null => {
   return { hex, rgb: [r, g, b] };
 };
 
-const colorDistance = (a: [number, number, number], b: [number, number, number]) =>
-  Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2) + Math.pow(a[2] - b[2], 2);
+const rgbToHsv = ([r, g, b]: [number, number, number]): [number, number, number] => {
+  const rNorm = r / 255;
+  const gNorm = g / 255;
+  const bNorm = b / 255;
+  const max = Math.max(rNorm, gNorm, bNorm);
+  const min = Math.min(rNorm, gNorm, bNorm);
+  const delta = max - min;
+
+  let h = 0;
+  if (delta !== 0) {
+    if (max === rNorm) h = ((gNorm - bNorm) / delta) % 6;
+    else if (max === gNorm) h = (bNorm - rNorm) / delta + 2;
+    else h = (rNorm - gNorm) / delta + 4;
+    h *= 60;
+    if (h < 0) h += 360;
+  }
+
+  const s = max === 0 ? 0 : delta / max;
+  const v = max;
+
+  return [h, s, v];
+};
+
+const hsvDistance = (a: [number, number, number], b: [number, number, number]) => {
+  const hueDiff = Math.min(Math.abs(a[0] - b[0]), 360 - Math.abs(a[0] - b[0])) / 360;
+  const satDiff = a[1] - b[1];
+  const valDiff = a[2] - b[2];
+  return hueDiff * hueDiff + satDiff * satDiff + valDiff * valDiff;
+};
+
+const palette: PaletteColor[] = lumicaColors.map((color, index) => {
+  const parsed = parseHex(color.value);
+  const rgb = parsed?.rgb ?? [0, 0, 0];
+  return {
+    ...color,
+    value: color.value.toLowerCase(),
+    hsv: rgbToHsv(rgb),
+    index,
+    mode: index < 12 ? "standard" : "extended",
+  };
+});
 
 const findClosestColor = (inputHex: string) => {
   const parsed = parseHex(inputHex);
   if (!parsed) return null;
-  const { rgb } = parsed;
+  const hsv = rgbToHsv(parsed.rgb);
 
   return palette.reduce(
     (best, color) => {
-      const targetRgb = parseHex(color.value)?.rgb ?? [0, 0, 0];
-      const distance = colorDistance(rgb, targetRgb);
+      const distance = hsvDistance(hsv, color.hsv);
       if (distance < best.distance) {
         return { color, distance };
       }
@@ -477,7 +509,7 @@ export default function Home() {
                     </span>
                     {result ? (
                       <span className="rounded-md bg-[#fabe01]/20 px-2.5 py-1 text-[10px] font-semibold leading-none text-[#7a5a00]">
-                          {t.rgbDistance} {Math.round(result.distance)}
+                          {t.hsvDistance} {result.distance.toFixed(4)}
                         </span>
                       ) : null}
                   </p>
