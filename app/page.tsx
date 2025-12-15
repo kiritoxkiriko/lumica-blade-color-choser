@@ -51,8 +51,8 @@ const translations: Record<Locale, Copy> = {
   en: {
     languageLabel: "Language",
     heroBadge: "Product intro",
-    heroSource: "Based on Lumica Blade Charge details from penlightstore.com",
-    heroTitle: "Rechargeable Lumica Blade Charge with 24 official colors",
+    heroSource: "Based on Lumica DAISENKO Blade Charge details from penlightstore.com",
+    heroTitle: "Rechargeable Lumica DAISENKO Blade Charge with 24 official colors",
     heroSubtitle: "Color Selector & Matcher",
     heroDescription:
       "A USB-rechargeable glow stick that ships with 12 standard colors and allows 12 additional modes. Use the picker below to match any hex color to the closest official hue, and preview the exact slot from the official color sheet.",
@@ -84,8 +84,8 @@ const translations: Record<Locale, Copy> = {
   zh: {
     languageLabel: "语言",
     heroBadge: "产品介绍",
-    heroSource: "参考 penlightstore.com 的 Lumica Blade Charge 信息",
-    heroTitle: "24 种官方配色的可充电 Lumica Blade Charge",
+    heroSource: "参考 penlightstore.com 的 Lumica DAISENKO Blade Charge 信息",
+    heroTitle: "24 种官方配色的可充电 Lumica DAISENKO Blade Charge",
     heroSubtitle: "颜色选择与匹配",
     heroDescription:
       "一支 USB 充电的荧光棒，自带 12 种标准色并提供额外 12 种扩展模式。使用下面的选择器，将任意 Hex 与最接近的官方颜色匹配，并预览官方色卡中的对应切片。",
@@ -117,8 +117,8 @@ const translations: Record<Locale, Copy> = {
   ja: {
     languageLabel: "言語",
     heroBadge: "製品紹介",
-    heroSource: "penlightstore.com の Lumica Blade Charge 情報を基にしています",
-    heroTitle: "24色の公式カラーを備えた充電式ルミカブレード",
+    heroSource: "penlightstore.com の Lumica DAISENKO Blade Charge 情報を基にしています",
+    heroTitle: "24色の公式カラーを備えた充電式 Lumica DAISENKO Blade Charge",
     heroSubtitle: "カラーセレクター & マッチャー",
     heroDescription:
       "USB 充電式のペンライト。基本カラー12色＋カスタム選択できる追加カラー12色、最大24色カラーチェンジ！下のピッカーで任意の Hex を最も近い公式色にマッチさせ、公式シートのスプライトを確認できます。",
@@ -320,7 +320,7 @@ export default function Home() {
         <header className="flex flex-col gap-3">
           <div className="flex flex-wrap items-center gap-3">
             <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[#fabe01]/30 bg-[#fabe01]/15 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#7a5a00] shadow-sm">
-              Lumica Blade Charge
+              Lumica DAISENKO Blade Charge
             </div>
             <div className="flex items-center gap-2">
               <label className="text-xs font-semibold text-slate-600" htmlFor="locale">
@@ -386,7 +386,7 @@ export default function Home() {
             <div className="overflow-hidden rounded-xl border border-slate-200 bg-slate-50 p-2">
               <Image
                 src="/lumica_blade_charge.webp"
-                alt="Lumica Blade Charge main product"
+                alt="Lumica DAISENKO Blade Charge main product"
                 width={1000}
                 height={1000}
                 className="h-auto w-full"
@@ -396,7 +396,7 @@ export default function Home() {
             <div className="overflow-hidden rounded-xl border border-slate-200 bg-slate-50 p-2">
               <Image
                 src="/lumica_blade_charge_colors.jpg"
-                alt="Lumica Blade Charge official color lineup"
+                alt="Lumica DAISENKO Blade Charge official color lineup"
                 width={1000}
                 height={1000}
                 className="h-auto w-full"
